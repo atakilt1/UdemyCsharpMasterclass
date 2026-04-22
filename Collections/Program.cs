@@ -61,6 +61,19 @@ namespace Collections
                     $", earns {item.Value.Salary} and is {item.Value.Age} years old.");
             }
 
+            Console.WriteLine();
+
+            // Declare and initialize the dictionary with key "numbers" and values 1, 2, and 3
+            Dictionary<string, List<int>> myDict = new Dictionary<string, List<int>>()
+            {
+                { "numbers", new List<int> { 1, 2, 3 } }
+            }; 
+          
+            foreach (int number in myDict["numbers"])
+            {
+                Console.Write(number + " "); // Print each value to the console
+            }
+
             Console.ReadKey();
         }
     }
