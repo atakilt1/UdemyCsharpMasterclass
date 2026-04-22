@@ -74,6 +74,25 @@ namespace Collections
                 Console.Write(number + " "); // Print each value to the console
             }
 
+            Console.WriteLine();
+            var codes = new Dictionary<string, string> { 
+                ["NY"] = "New York",
+                ["CA"] = "California",
+                ["TX"] = "Texas",
+
+            };
+
+            if(codes.TryGetValue("NY", out string state))
+            {
+                Console.WriteLine(state);
+            }
+
+            foreach (var item in codes)
+            {
+                Console.WriteLine($"The state code is {item.Key} and" +
+                    $"the state name is {item.Value}");
+            }
+
             Console.ReadKey();
         }
     }
