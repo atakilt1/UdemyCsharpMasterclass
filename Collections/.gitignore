@@ -1,0 +1,27 @@
+# Exclude Visual Studio solution files
+*.sln
+
+# Common C# compiled files
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.user
+*.cache
+
+# Visual Studio specific files
+.vs/
+*.suo
+*.userprefs
+*.csproj.user
+
+# Package management
+packages/
+*.nupkg
+
+# Logs
+*.log
+
+# Test results
+TestResults/
