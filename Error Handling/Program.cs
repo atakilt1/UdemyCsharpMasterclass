@@ -18,6 +18,18 @@ namespace Error_Handling
                 int num2 = int.Parse(Console.ReadLine());
                 result = num1 / num2;
             }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("Don't divid by ZERO!!!", ex.Message);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Enter only number", ex.Message);
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("Number too high", ex.ToString());
+            }
             catch (Exception ex)
             {
                 int lineNumber = GetExceptionLineNumber(ex);
@@ -69,7 +81,8 @@ namespace Error_Handling
         static int GetUserAge(string input)
         {
             int age;
-            if(int.TryParse(input, out age))
+
+            if(!int.TryParse(input, out age))
             {
                 throw new Exception("You didn't enter a valid age");
             }
