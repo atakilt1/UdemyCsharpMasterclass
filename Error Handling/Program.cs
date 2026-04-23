@@ -18,6 +18,10 @@ namespace Error_Handling
             {
                 Console.WriteLine("Error: " + ex.Message); 
             }
+            finally
+            {
+                Console.WriteLine("This always executes");
+            }
 
             Console.WriteLine("Result: " + result);
             Console.ReadKey();
