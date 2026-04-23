@@ -24,7 +24,20 @@ namespace Error_Handling
             }
 
             Console.WriteLine("Result: " + result);
+
+            PrintWithFinally();
+
             Console.ReadKey();
+            
+        }
+        
+        static void PrintWithFinally()
+        {
+            try
+            {
+                Console.WriteLine("Trying...");
+            }
+            finally { Console.WriteLine("Finally executed."); }              
         }
     }
 }
