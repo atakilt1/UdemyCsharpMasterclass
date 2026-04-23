@@ -35,6 +35,12 @@ namespace Error_Handling
 
             PrintWithFinally();
 
+            Console.WriteLine("Enter your age?");
+
+            int userAge = GetUserAge(Console.ReadLine());
+
+            Console.WriteLine("Age: "+ userAge);
+
             Console.ReadKey();
             
         }
@@ -58,6 +64,20 @@ namespace Error_Handling
                 Console.WriteLine("Trying...");
             }
             finally { Console.WriteLine("Finally executed."); }              
+        }
+
+        static int GetUserAge(string input)
+        {
+            int age;
+            if(int.TryParse(input, out age))
+            {
+                throw new Exception("You didn't enter a valid age");
+            }
+            if (age < 0 || age > 120)
+            {
+                throw new Exception("Your age must be between 0 and 120");
+            }
+            return age;
         }
     }
 }
