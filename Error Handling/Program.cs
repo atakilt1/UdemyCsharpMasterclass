@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Error_Handling
 {
@@ -7,6 +8,9 @@ namespace Error_Handling
         static void Main(string[] args)
         {
             int result = 0;
+
+            Debug.WriteLine("Main method is running.");
+
             try
             {
                 int num1 = 2;
@@ -16,7 +20,11 @@ namespace Error_Handling
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message); 
+                int lineNumber = GetExceptionLineNumber(ex);
+                Console.WriteLine($"Exception thrown at line: {lineNumber}");
+
+                Console.WriteLine("Error: " + ex.Message);
+                Debug.WriteLine(ex.Message);
             }
             finally
             {
@@ -30,7 +38,19 @@ namespace Error_Handling
             Console.ReadKey();
             
         }
-        
+
+        static int GetExceptionLineNumber(Exception ex)
+        {
+            // The 'true' parameter is crucial - it tells .NET to capture file info
+            var stackTrace = new StackTrace(ex, true);
+
+            // Get the frame where the exception originated
+            var frame = stackTrace.GetFrame(0);
+
+            // Returns 0 if no line number info is available
+            return frame.GetFileLineNumber();
+        }
+
         static void PrintWithFinally()
         {
             try
